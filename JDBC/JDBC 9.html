@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Code</title>
+    <!-- style -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="second">
+
+     <h1>    </h1>
+<pre class="input">
+  
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+class Jdbc {
+
+    static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    static Connection con;
+    static Statement st;
+    static PreparedStatement pst;
+
+    public static void main(String[] args) throws ClassNotFoundException, java.sql.SQLException, IOException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/entries", "root", "root");
+        st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+        System.out.println("Choose option:\n1. Insert\n2. Update\n3. Delete\n4. See table");
+        int option = Integer.parseInt(reader.readLine());
+
+        switch (option) {
+            case 1:
+                insert();
+                break;
+            case 2:
+                update();
+                break;
+            case 3:
+                delete();
+                break;
+            case 4:
+                show();
+                break;
+            default:
+                System.out.println("Invalid option!");
+                break;
+        }
+    }
+
+    static void insert() throws java.sql.SQLException, IOException {
+        pst = con.prepareStatement("INSERT INTO pggc(course_name, fees) VALUES(?, ?)");
+        System.out.println("Enter Course name:");
+        String c_name = reader.readLine();
+        System.out.println("Enter fees of the Course:");
+        float fees = Float.parseFloat(reader.readLine());
+        pst.setString(1, c_name);
+        pst.setFloat(2, fees);
+        int res = pst.executeUpdate();
+        System.out.println(res + " record(s) inserted");
+    }
+
+    static void update() throws java.sql.SQLException, IOException {
+        pst = con.prepareStatement("UPDATE pggc SET fees=? WHERE course_name=?");
+        System.out.println("Enter Course name whose fees to update:");
+        String c_name = reader.readLine();
+        System.out.println("Enter new fees:");
+        float fees = Float.parseFloat(reader.readLine());
+        pst.setFloat(1, fees);
+        pst.setString(2, c_name);
+        int res = pst.executeUpdate();
+        System.out.println(res + " record(s) updated");
+    }
+
+    static void delete() throws java.sql.SQLException, IOException {
+        pst = con.prepareStatement("DELETE FROM pggc WHERE course_name=?");
+        System.out.println("Enter Course name to delete:");
+        String c_name = reader.readLine();
+        pst.setString(1, c_name);
+        int res = pst.executeUpdate();
+        System.out.println(res + " record(s) deleted");
+    }
+
+    static void show() throws java.sql.SQLException {
+        pst = con.prepareStatement("SELECT * FROM pggc");
+        ResultSet view = pst.executeQuery();
+        System.out.println("The Data table is here:");
+        System.out.println("course_name      fees");
+        while (view.next()) {
+            System.out.println(view.getString("course_name") + " " + view.getFloat("fees"));
+        }
+    }
+}
+  
+  
+ 
+        
+</pre>
+<h1>OUTPUT</h1>
+
+<pre class="output">
+
+A:\java_programs\karan>javac 9.java
+
+A:\java_programs\karan>java -cp "C:\Users\JACK\Downloads\Compressed\mysql-connector-j-8.0.33\mysql-connector-j-8.0.33;." Jdbc
+    Choose option:
+    1. Insert
+    2. Update
+    3. Delete
+    4. See table
+    4
+The Data table is here:
+    course_name      fees
+    bsc 34500.0
+    bcom 1234.0
+    bio-tech 23800.0
+    ba-hons 2300.0
+    
+    
+
+    
+
+
+</pre>
+
+</div>
+
+
+</body>
+
+</html>

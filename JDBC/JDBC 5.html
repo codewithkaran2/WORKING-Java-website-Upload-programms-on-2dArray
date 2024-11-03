@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Code</title>
+    <!-- style -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="second">
+
+     <h1>    </h1>
+<pre class="input">
+    
+    
+
+    import java.sql.Connection;
+    import java.sql.DriverManager;
+    import java.sql.Statement;
+    class jdbc{
+        public static void main(String args[])throws ClassNotFoundException,java.sql.SQLException{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/entries","root","root");
+        Statement st=con.createStatement();
+        int r= st.executeUpdate("delete from jot where age=20");
+        
+        System.out.println(r +" records deleted");
+        con.close();
+        }
+        }
+        
+ 
+        
+</pre>
+<h1>OUTPUT</h1>
+
+<pre class="output">
+
+A:\java_programs\karan>javac 5.java
+
+A:\java_programs\karan>java -cp "C:\Users\JACK\Downloads\Compressed\mysql-connector-j-8.0.33\mysql-connector-j-8.0.33;." jdbc
+1 records deleted
+    
+    
+
+
+</pre>
+
+</div>
+
+
+</body>
+
+</html>

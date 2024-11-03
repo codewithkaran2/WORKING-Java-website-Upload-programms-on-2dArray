@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Code</title>
+    <!-- style -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="second">
+
+     <h1>    </h1>
+<pre class="input">
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.io.*;
+
+class jdbc{
+public static void main (String arg[])throws ClassNotFoundException,java.sql.SQLException,java.io.IOException
+{
+Class.forName("com.mysql.cj.jdbc.Driver");
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/entries","root","root");
+Statement st=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+BufferedReader scan=new BufferedReader(new InputStreamReader(System.in)); 
+System.out.println("Enter row number for the data to display:");
+int row=Integer.parseInt(scan.readLine());
+ResultSet view=st.executeQuery("select * from student ");
+view.absolute(row);
+System.out.println("Here's your Data:");
+System.out.println(view.getString(1)+" "+view.getString(2)+" "+view.getDate(3)+" "+view.getString(4)+" "+view.getString(5)+" "+view.getString(6));
+}
+}
+ 
+ 
+        
+</pre>
+<h1>OUTPUT</h1>
+
+<pre class="output">
+A:\java_programs\karan>javac 7.java
+
+A:\java_programs\karan>java -cp "C:\Users\JACK\Downloads\Compressed\mysql-connector-j-8.0.33\mysql-connector-j-8.0.33;." jdbc
+Enter row number for the data to display:
+    3
+Here's your Data:
+s001 rajesh 1980-12-17 kolkata graduate rajesh@gmail.com
+
+    
+
+
+</pre>
+
+</div>
+
+
+</body>
+
+</html>

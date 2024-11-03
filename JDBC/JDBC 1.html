@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Code</title>
+    <!-- style -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="second">
+
+     <h1>    </h1>
+<pre class="input">
+
+    import java.sql.Connection;
+    import java.sql.DriverManager;
+    import java.sql.Statement;
+
+    class jdbc{
+    public static void main(String args[])throws ClassNotFoundException,java.sql.SQLException
+    {
+    java.lang.Class.forName("com.mysql.cj.jdbc.Driver");
+    Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/entries","root","root");
+    Statement st=con.createStatement();
+    st.executeUpdate("insert into student(id,name) values(45,'karan')");
+    con.close();
+}
+}
+     
+ 
+        
+</pre>
+<h1>OUTPUT</h1>
+
+<pre class="output">
+
+A:\java_programs\karan>javac 1.java
+
+A:\java_programs\karan>java -cp "C:\Users\JACK\Downloads\Compressed\mysql-connector-j-8.0.33\mysql-connector-j-8.0.33;." jdbc
+    
+
+
+
+</pre>
+
+</div>
+
+
+</body>
+
+</html>

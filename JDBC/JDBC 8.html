@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Code</title>
+    <!-- style -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="second">
+
+     <h1>    </h1>
+<pre class="input">
+    import java.sql.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+class JdbcExample {
+
+    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static Connection con;
+    private static PreparedStatement st;
+    private static ResultSet view;
+
+    public static void main(String[] args) {
+        try {
+            // Load the MySQL JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establish a connection
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/entries", "root", "root");
+
+            // Create a statement that is scrollable and updatable
+            Statement stmt = con.createStatement(
+                    ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE
+            );
+
+            // Get the user's choice
+            System.out.println("Choose:\n1. Insert\n2. Update\n3. Delete");
+            int choice = Integer.parseInt(reader.readLine());
+
+            switch (choice) {
+                case 1:
+                    insert();
+                    break;
+                case 2:
+                    update();
+                    break;
+                case 3:
+                    delete();
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+
+        } catch (ClassNotFoundException | SQLException | IOException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (view != null) view.close();
+                if (st != null) st.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private static void insert() throws SQLException, IOException {
+        String sql = "INSERT INTO student (id, name, dob, city, qual, email, phone) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        st = con.prepareStatement(sql);
+
+        System.out.println("Please provide id, name, dob (YYYY-MM-DD), city, qualification, email, phone (leave blank for null):");
+
+        System.out.print("ID: ");
+        String id = reader.readLine();
+        System.out.print("Name: ");
+        String name = reader.readLine();
+        System.out.print("Date of Birth (YYYY-MM-DD): ");
+        String dob = reader.readLine();
+        System.out.print("City: ");
+        String city = reader.readLine();
+        System.out.print("Qualification: ");
+        String qual = reader.readLine();
+        System.out.print("Email: ");
+        String email = reader.readLine();
+        System.out.print("Phone No: ");
+        String phone = reader.readLine();
+
+        // Set parameters
+        st.setString(1, id.isEmpty() ? null : id);
+        st.setString(2, name.isEmpty() ? null : name);
+        st.setDate(3, dob.isEmpty() ? null : Date.valueOf(dob));
+        st.setString(4, city.isEmpty() ? null : city);
+        st.setString(5, qual.isEmpty() ? null : qual);
+        st.setString(6, email.isEmpty() ? null : email);
+        st.setString(7, phone.isEmpty() ? null : phone);
+
+        int res = st.executeUpdate();
+        System.out.println(res + " record(s) added.");
+    }
+
+    private static void update() throws SQLException, IOException {
+        System.out.print("Enter the ID of the record to update: ");
+        String id = reader.readLine();
+
+        String sql = "UPDATE student SET name = ?, dob = ?, city = ?, qual = ?, email = ?, phone = ? WHERE id = ?";
+        st = con.prepareStatement(sql);
+
+        System.out.print("New Name: ");
+        String name = reader.readLine();
+        System.out.print("New Date of Birth (YYYY-MM-DD): ");
+        String dob = reader.readLine();
+        System.out.print("New City: ");
+        String city = reader.readLine();
+        System.out.print("New Qualification: ");
+        String qual = reader.readLine();
+        System.out.print("New Email: ");
+        String email = reader.readLine();
+        System.out.print("New Phone No: ");
+        String phone = reader.readLine();
+
+        // Set parameters
+        st.setString(1, name.isEmpty() ? null : name);
+        st.setDate(2, dob.isEmpty() ? null : Date.valueOf(dob));
+        st.setString(3, city.isEmpty() ? null : city);
+        st.setString(4, qual.isEmpty() ? null : qual);
+        st.setString(5, email.isEmpty() ? null : email);
+        st.setString(6, phone.isEmpty() ? null : phone);
+        st.setString(7, id);
+
+        int res = st.executeUpdate();
+        System.out.println(res + " record(s) updated.");
+    }
+
+    private static void delete() throws SQLException, IOException {
+        System.out.print("Enter the ID of the record to delete: ");
+        String id = reader.readLine();
+
+        String sql = "DELETE FROM student WHERE id = ?";
+        st = con.prepareStatement(sql);
+        st.setString(1, id);
+
+        int res = st.executeUpdate();
+        System.out.println(res + " record(s) deleted.");
+    }
+}
+ 
+ 
+        
+</pre>
+<h1>OUTPUT</h1>
+
+<pre class="output">
+A:\java_programs\karan>javac 8.java
+
+A:\java_programs\karan>java -cp "C:\Users\JACK\Downloads\Compressed\mysql-connector-j-8.0.33\mysql-connector-j-8.0.33;." JdbcExample
+    Choose:
+    1. Insert
+    2. Update
+    3. Delete
+    2
+Enter the ID of the record to update: 45
+    New Name: kuhu
+    New Date of Birth (YYYY-MM-DD): 2007-9-7
+    New City: chandigarh
+    New Qualification: bba
+    New Email: hf,hjft
+    New Phone No: 88764346
+    1 record(s) updated.
+    
+    
+
+    
+
+
+</pre>
+
+</div>
+
+
+</body>
+
+</html>
