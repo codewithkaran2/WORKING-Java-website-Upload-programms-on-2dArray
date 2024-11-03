@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Code</title>
+    <!-- style -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="second">
+
+     <h1>    </h1>
+<pre class="input">
+
+    class main {
+        public static void main(String st[]) {
+            int arr[];
+            arr = new int[8];
+    
+            arr[0] = 3;
+            arr[1] = 96;
+            arr[2] = 112;
+            arr[3] = 8;
+            arr[4] = 91;
+            arr[5] = 6;
+            arr[6] = 41;
+            arr[7] = 0;
+    
+            System.out.println("Original array is:");
+    
+            for (int i = 0; i < 8; i++) {
+                System.out.print(arr[i] + " ");
+            }
+    
+            System.out.println("\nArray elements at even position is:");
+    
+            for (int i = 0; i < 8; i++) {
+                if (i % 2 == 0)
+                    System.out.print(arr[i] + " ");
+            }
+        }
+    }
+                 
+        
+</pre>
+<h1>OUTPUT</h1>
+
+<pre class="output">
+
+    C:\karan\1dArray>java main
+    Original array is:
+    3 96 112 8 91 6 41 0
+    Array elements at even position is:
+    3 112 91 41
+                
+
+
+</pre>
+
+</div>
+
+
+</body>
+
+</html>

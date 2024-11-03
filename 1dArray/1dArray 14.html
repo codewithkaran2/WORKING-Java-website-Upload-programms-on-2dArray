@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Code</title>
+    <!-- style -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="second">
+
+     <h1>    </h1>
+<pre class="input">
+
+
+    //Program to sort the elements of an array in ascending order
+
+    class SortAsc {    
+        public static void main(String[] args) {        
+                
+            //Initialize array     
+            int [] arr = new int [] {5, 2, 8, 7, 1};     
+            int temp = 0;    
+                
+            //Displaying elements of original array    
+            System.out.println("Elements of original array: ");    
+            for (int i = 0; i < arr.length; i++) {     
+                System.out.print(arr[i] + " ");    
+            }    
+                
+            //Sort the array in ascending order    
+            for (int i = 0; i < arr.length; i++) {     
+                for (int j = i+1; j < arr.length; j++) {     
+                   if(arr[i] > arr[j]) {    
+                       temp = arr[i];    
+                       arr[i] = arr[j];    
+                       arr[j] = temp;    
+                   }     
+                }     
+            }    
+              
+            System.out.println();    
+                
+            //Displaying elements of array after sorting    
+            System.out.println("Elements of array sorted in ascending order: ");    
+            for (int i = 0; i < arr.length; i++) {     
+                System.out.print(arr[i] + " ");    
+            }    
+        }    
+    }     
+        
+</pre>
+<h1>OUTPUT</h1>
+
+<pre class="output">
+
+    C:\karan\1dArray>java SortAsc
+
+    Elements of original array: Elements of array sorted in ascending order:
+    
+    52871
+    
+    12578
+
+
+
+</pre>
+
+</div>
+
+
+</body>
+
+</html>

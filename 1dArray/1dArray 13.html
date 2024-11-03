@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Code</title>
+    <!-- style -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="second">
+
+     <h1>    </h1>
+<pre class="input">
+
+
+    //Program to right rotate the elements of an array
+    
+    class RightRotateArray {
+        public static void main(String[] args) {
+            int[] array = {1, 2, 3, 4, 5};
+    
+            int positionsToRotate = 2;
+            rightRotate(array, positionsToRotate);
+    
+            System.out.print("Rotated Array: ");
+            for (int num : array) {
+                System.out.print(num + " ");
+            }
+        }
+        private static void rightRotate(int[] arr, int positions) {
+            int length = arr.length;
+    
+            positions = positions % length;
+    
+            int[] temp = new int[positions];
+    
+            for (int i = 0; i < positions; i++) {
+                temp[i] = arr[length - positions + i];
+            }
+    
+            for (int i = length - 1; i >= positions; i--) {
+                arr[i] = arr[i - positions];
+            }
+    
+            for (int i = 0; i < positions; i++) {
+                arr[i] = temp[i];
+            }
+        }
+    }
+     
+        
+</pre>
+<h1>OUTPUT</h1>
+
+<pre class="output">
+
+    C:\karan\1dArray>javac 13.java
+
+    C:\karan\1dArray>java RightRotateArray
+    
+    Rotated Array: 45123
+
+
+</pre>
+
+</div>
+
+
+</body>
+
+</html>

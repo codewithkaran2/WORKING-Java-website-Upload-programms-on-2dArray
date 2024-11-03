@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Code</title>
+    <!-- style -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="second">
+
+     <h1>    </h1>
+<pre class="input">
+
+   
+//Program to Find 2nd Smallest Number in an array
+
+class find {
+   public static void main(String args[]){
+      int temp, size;
+      int array[] = {10, 20, 25, 63, 96, 57};
+      size = array.length;
+
+      for(int i = 0; i<size; i++ ){
+         for(int j = i+1; j<size; j++){
+            if(array[i]>array[j]){
+               temp = array[i];
+               array[i] = array[j];
+               array[j] = temp;
+            }
+         }
+      }
+      System.out.println("2nd Smallest element of the array is:: "+array[1]);
+   }
+}
+
+ 
+        
+</pre>
+<h1>OUTPUT</h1>
+
+<pre class="output">
+
+    C:\karan\1d array> java find 
+    2nd Smallest element of the array is:: 20
+
+
+
+</pre>
+
+</div>
+
+
+</body>
+
+</html>

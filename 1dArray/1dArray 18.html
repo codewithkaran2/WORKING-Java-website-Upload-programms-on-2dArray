@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Code</title>
+    <!-- style -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="second">
+
+     <h1>    </h1>
+<pre class="input">
+
+
+    //Program to Find Largest Number in an array
+
+    class findlargestArrayElement {
+       public static void main(String[] args) {
+           int[] numbers = {10, 5, 7, 25, 30, 75};
+   
+           int largestNumber = findLargestNumber(numbers);
+           System.out.println("The largest number in the array is: " + largestNumber);
+       }
+   
+       public static int findLargestNumber(int[] arr) {
+           if (arr.length == 0) {
+               throw new IllegalArgumentException("Array is empty");
+           }
+   
+           int max = arr[0];
+           for (int i = 1; i < arr.length; i++) {
+               if (arr[i] > max) {
+                   max = arr[i];
+               }
+           }
+           return max;
+       }
+   }
+   
+    
+        
+</pre>
+<h1>OUTPUT</h1>
+
+<pre class="output">
+
+    C:\karan\1dArray>java findlargestArrayElement
+
+    The largest number in the array is: 75
+
+
+</pre>
+
+</div>
+
+
+</body>
+
+</html>

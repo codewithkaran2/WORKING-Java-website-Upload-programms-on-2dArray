@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Code</title>
+    <!-- style -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="second">
+
+     <h1>    </h1>
+<pre class="input">
+
+
+    //Program to Remove Duplicate Element in an array
+
+    import java.util.Arrays;
+    
+    class array1 {
+        public static void main(String[] args) {
+            int[] arr = {1, 2, 3, 4, 2, 7, 8, 8, 3};
+            System.out.println("Duplicate elements in the given array: ");
+            for (int i = 0; i < arr.length - 1; i++) {
+                for (int j = i + 1; j < arr.length; j++) {
+                    if ((arr[i] == arr[j]) && (i != j)) {
+                        System.out.print(arr[j] + " ");
+                    }
+                }
+            }
+        }
+    } 
+        
+</pre>
+<h1>OUTPUT</h1>
+
+<pre class="output">
+
+    C:\karan\1dArray>java array1
+
+    Duplicate elements in the given array:
+    
+    238
+
+
+
+</pre>
+
+</div>
+
+
+</body>
+
+</html>
